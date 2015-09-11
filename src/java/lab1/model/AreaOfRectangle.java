@@ -5,51 +5,44 @@ package lab1.model;
  * @author Tyler
  */
 public class AreaOfRectangle {
-    
+
     private double lengthOfSide;
     private double widthOfSide;
-    private double totalArea;
 
-    public AreaOfRectangle(double lengthOfSide, double widthOfSide) {
-        this.lengthOfSide = lengthOfSide;
-        this.widthOfSide = widthOfSide;
+    public AreaOfRectangle(String lengthOfSide, String widthOfSide) {
+        try{
+        setLengthOfSide(lengthOfSide);
+        setWidthOfSide(widthOfSide);
+        }catch (NumberFormatException nfe){
+            nfe.printStackTrace();
+            System.out.println("Whoops! Enter the dimensions!");
+        }
     }
 
-    public double getLengthOfSide() {
+    public final double getLengthOfSide() {
         return lengthOfSide;
     }
 
-    public void setLengthOfSide(double lengthOfSide) {
-        this.lengthOfSide = lengthOfSide;
+    public final void setLengthOfSide(String lengthOfSide) {
+        double los = Double.parseDouble(lengthOfSide);
+        this.lengthOfSide = los;
     }
 
-    public double getWidthOfSide() {
+    public final double getWidthOfSide() {
         return widthOfSide;
     }
 
-    public void setWidthOfSide(double widthOfSide) {
-        this.widthOfSide = widthOfSide;
-    }
-    
-        public double getTotalArea() {
-        return totalArea;
+    public final void setWidthOfSide(String widthOfSide) {
+        double wos = Double.parseDouble(widthOfSide);
+        this.widthOfSide = wos;
     }
 
-    public void setTotalArea(double totalArea) {
-        this.totalArea = totalArea;
+    public final double calculateAreaOfRectangle() {
+        return lengthOfSide * widthOfSide;
     }
 
-    public double calculateAreaOfRectangle(double lengthOfSide, double widthOfSide) {
-        this.lengthOfSide = lengthOfSide;
-        totalArea = lengthOfSide * widthOfSide;
-        return totalArea;
-    }
-    
-    /*
-    public static void main(String[] args) {
-       AreaOfRectangle aor = new AreaOfRectangle(5,5);
-       
-        System.out.println(aor.calculateAreaOfSquare(5, 5)); 
-    }
-    */
+//    public static void main(String[] args) {
+//       AreaOfRectangle aor = new AreaOfRectangle(5.0,6.0);
+//         System.out.println(aor.getTotalArea()); 
+//    }
 }

@@ -21,9 +21,11 @@ import lab1.model.AreaOfRectangle;
  *
  * @author Tyler
  */
-@WebServlet(name = "CalculatorController", urlPatterns = {"/CalculatorController"})
+@WebServlet(name = "CalculatorController", urlPatterns = {"/calculatorController"})
 public class CalculatorController extends HttpServlet {
 
+    private static final String RESULT_PAGE = "labOne/labOneOutput.jsp";
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,22 +40,23 @@ public class CalculatorController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
             String action = request.getParameter("action");
-            String length = request.getParameter("lengthOfSide");
-            String width = request.getParameter("widthOfSide");
+            String squareLength = request.getParameter("lengthOfSquareSide");
+            String recLength = request.getParameter("lengthOfRecSide");
+            String recWidth = request.getParameter("widthOfRecSide");
 
-            if (action.equals("calcSquare")) {
-                AreaOfSquare aos = new AreaOfSquare(Double.parseDouble(length));
-                double result = aos.calculateAreaOfSquare(Double.parseDouble(length));
+            if (action.equalsIgnoreCase("calcSquare")) {
+                AreaOfSquare aos = new AreaOfSquare(squareLength);
+                double result = aos.calculateAreaOfSquare();
                 request.setAttribute("result", result);
-            } else if (action.equals("calcRectangle")) {
-                AreaOfRectangle aor = new AreaOfRectangle(Double.parseDouble(length), Double.parseDouble(width));
-                double result = aor.calculateAreaOfRectangle(Double.parseDouble(length),Double.parseDouble(width));
+            
+            } else if (action.equalsIgnoreCase("calcRectangle")) {
+                AreaOfRectangle aor = new AreaOfRectangle(recLength, recWidth);
+                double result = aor.calculateAreaOfRectangle();
                 request.setAttribute("result", result);
             }
 
-       
         RequestDispatcher view =
-                request.getRequestDispatcher("labOne/labOneOutput.jsp");
+                request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);
     }
 

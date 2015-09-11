@@ -25,15 +25,15 @@
 
         <h1>Area</h1>
 
-        <form id="form1" name="form1" method="POST" action="<%= request.getContextPath()%>/CalculatorController?action=calcSquare">
+        <form id="form1" name="form1" method="POST" action="<%= request.getContextPath()%>/calculatorController?action=calcSquare">
             <p>To find the area, please enter the length of one of the sides of the square in question:</p>
-            <input type="text" name="lengthOfSide">
+            <input type="text" name="squareSide">
             <input type="submit" name="submit" value="Calculate">
             <p>The answer is: <%= answer%> </p>
             <hr>
             <p>To find the area, please enter the length and width of the rectangle in question:</p>
-            <input type="text" name="lengthOfSide">
-            <input type="text" name="widthOfSide">
+            <input type="text" name="recSideLength">
+            <input type="text" name="recSideWidth">
             <input type="submit" name="submit" value="Calculate">
             <p>The answer is: <%= answer%> </p>
 

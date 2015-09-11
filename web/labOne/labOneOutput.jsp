@@ -4,7 +4,10 @@
     Author     : Tyler
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,20 +18,21 @@
         
          <%
             String answer = "";
-            Object obj = request.getAttribute("result");
-            if (obj == null) {
+     
+            Object result = request.getAttribute("result");
+            
+            
+            if (result == null) {
                 answer = "Whoops! No answer found. Please try again.";
+        
             } else {
-                Double d = (Double) obj;
+                
+                Double d = (Double) result;
                 answer = d.toString();
             }
-        %>
-        
-        <p>The area of your square is: <%= answer%> </p>
-        
-        <hr>
-        
-         <p>The area of your rectangle is: <%= answer%> </p>        
-        
+            %>
+             
+        <p>The total area of your shape is: <%=answer%> </p>
+  
     </body>
-</html>
+</html> 
